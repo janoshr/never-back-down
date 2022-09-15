@@ -6,6 +6,15 @@ class Card:
         self.id = id
         self.card_type = card_type
 
+    def is_type(self, card_type):
+        if card_type in self.card_type:
+            return true
+        else:
+            return false
+
+    def is_id(self, card_id):
+        return self.id == card_id
+
 class Weapon(Card):
 
     def __init__(self, name, id, card_type):
@@ -36,7 +45,7 @@ class Weapon(Card):
             parry_damage = opponent_card.block()
             if parry_damage and 'melee' in self.card_type:
                 acting_player.lose_health(parry_damage)
-                target_player.damage_dealt_in_fight+=parry_damage
+                target_player.damage_dealt_in_fight += parry_damage
                 return
             elif parry_damage == 0:
                 return

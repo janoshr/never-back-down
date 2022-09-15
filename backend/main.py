@@ -48,23 +48,35 @@ class Player:
         self.name=name
         self.deck=base_cards
 
-    def add_card_to_deck(self):
+    def add_card_to_deck(self, new_card):
+        deck.append(new_card)
+
+    def remove_card_from_deck_by_id(self):
         pass
 
-    def remove_card_from_deck(self):
-        pass
-
-    def lose_health(self):
-        pass
+    def lose_health(self, health_lost):
+        if self.vitality >= health_lost:
+            self.vitality -= health_lost
+        else:
+            sef.health -= health_lost - self.vitality
+            self.vitality = 0
 
     def gain_health(self):
         pass
 
     def has_card_type(self, card_type, amount):
-        pass
+        counted_cards = 0
+        for card in deck:
+            if card.is_type(card_type):
+                counted_cards += 1
+        return counted_cards
 
     def has_card_id(self, card_id, amount):
-        pass
+        counted_cards = 0
+        for card in deck:
+            if card.is_id(card_type):
+                counted_cards += 1
+        return counted_cards
 
 class EventChain:
     index
@@ -111,7 +123,5 @@ class Table:
 
     def resolve_table(self):
         """
-        Reset players vitality and return winner.
         In case of tie, no winners
         """
-        pass
